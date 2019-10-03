@@ -6,8 +6,17 @@ ThemeData appTheme = new ThemeData(
   hintColor: Colors.black45,
 );
 
-const Color primaryColor = Color.fromRGBO(29, 33, 107, 1.0);
-const Color secondaryColor = Color.fromRGBO(57, 173, 74, 1.0);
-const Color thirdColor = const Color.fromRGBO(16, 124, 121, 1.0);
-const Color mutedColor = Colors.black38;
-const Color textColor = Colors.white;
+const Color primaryColor = Color.fromRGBO(45, 95, 175, 1.0);
+const Color secondaryColor = Color.fromRGBO(190, 194, 206, 1.0);
+const Color thirdColor = Color.fromRGBO(252, 252, 252, 1.0);
+const Color mutedColor = Colors.white38;
+const Color textColor = Colors.black;
+const Color textColorPrimary = Colors.white;
+const Color textColorSecondary = primaryColor;
+
+TextStyle mainMutedTitle = mutedText(25.0);
+
+TextStyle mutedText(double _fontSize) => TextStyle(
+  color: mutedColor,
+  fontSize: _fontSize,
+);
