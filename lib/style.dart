@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 ThemeData appTheme = new ThemeData(
   primaryColor: primaryColor,
+  accentColor: secondaryColor,
   hintColor: Colors.black45,
   fontFamily: "Mosk",
 );
