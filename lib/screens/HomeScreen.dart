@@ -13,9 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2)).then((_) {
-      Navigator.pushReplacementNamed(context, "/main");
-    });
+    Future.delayed(Duration(seconds: 2))
+        .then((_) => Navigator.pushReplacementNamed(context, "/main"));
   }
 
   @override

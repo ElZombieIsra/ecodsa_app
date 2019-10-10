@@ -22,3 +22,23 @@ TextStyle mutedText(double _fontSize) => TextStyle(
       color: mutedColor,
       fontSize: _fontSize,
     );
+
+TextStyle primaryText({
+  double fontSize,
+  FontWeight weight = FontWeight.normal,
+}) =>
+    TextStyle(
+      color: primaryColor,
+      fontSize: fontSize,
+      fontWeight: weight,
+    );
+
+TextStyle userNameText = TextStyle(
+  fontWeight: FontWeight.w600,
+  fontSize: 15.0,
+);
+
+TextStyle title1 = primaryText(
+  fontSize: 55.0,
+  weight: FontWeight.w400,
+);

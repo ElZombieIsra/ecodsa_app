@@ -1,3 +1,4 @@
+import 'package:ecodsa_app/screens/indexScreen/indexScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
 
@@ -8,11 +9,19 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _navigationIndex = 0;
+  final List<Widget> _widgets = [
+    IndexScreen(),
+    Container(child: Center(child: Text("Soon"))),
+    Container(child: Center(child: Text("Soon"))),
+    Container(child: Center(child: Text("Soon"))),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("Bienvenido"),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 40.0),
+        child: _widgets[_navigationIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Style.primaryColor,
