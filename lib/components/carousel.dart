@@ -1,8 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecodsa_app/components/image_container.dart';
 import 'package:flutter/material.dart';
 
 class CustomCarousel extends StatefulWidget {
-  final List<Widget> children;
+  final List<dynamic> children;
   final Function onPageChanged;
   final double heigth;
 
@@ -22,7 +23,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final _threshold = 10;
+    final _threshold = 40;
     final _height = widget.heigth != null ? widget.heigth + _threshold : 400.0;
     return Container(
       padding: EdgeInsets.zero,
@@ -30,10 +31,15 @@ class _CustomCarouselState extends State<CustomCarousel> {
       child: Stack(
         children: [
           CarouselSlider(
-            viewportFraction: 1.0,
+            viewportFraction: 1.025,
             enableInfiniteScroll: true,
             pauseAutoPlayOnTouch: Duration(seconds: 5),
-            items: widget.children,
+            items: widget.children
+                .map<Widget>((url) => CustomImageContainer(
+                      url,
+                      width: screenSize.width - 80.0,
+                    ))
+                .toList(),
             autoPlay: true,
             aspectRatio: screenSize.aspectRatio,
             height: _height - _threshold,
@@ -57,7 +63,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
                   margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: widget.children.indexOf(child) == _current
+                      color: child == widget.children[_current]
                           ? Color.fromRGBO(0, 0, 0, 0.9)
                           : Color.fromRGBO(0, 0, 0, 0.4)),
                 );

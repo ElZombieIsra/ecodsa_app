@@ -19,10 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 40.0),
-        child: _widgets[_navigationIndex],
-      ),
+      body: _widgets[_navigationIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Style.primaryColor,
         unselectedItemColor: Style.mutedColor,

@@ -16,11 +16,26 @@ const Color textColor = Colors.black;
 const Color textColorPrimary = Colors.white;
 const Color textColorSecondary = primaryColor;
 
-TextStyle mainMutedTitle = mutedText(25.0);
+TextStyle mainMutedTitle = mutedText(fontSize: 25.0);
 
-TextStyle mutedText(double _fontSize) => TextStyle(
+TextStyle mutedText({
+  double fontSize = 20.0,
+  FontWeight weight = FontWeight.normal,
+}) =>
+    TextStyle(
       color: mutedColor,
-      fontSize: _fontSize,
+      fontSize: fontSize,
+      fontWeight: weight,
+    );
+
+TextStyle whiteText({
+  double fontSize = 18.0,
+  FontWeight weight = FontWeight.normal,
+}) =>
+    TextStyle(
+      color: textColorPrimary,
+      fontSize: fontSize,
+      fontWeight: weight,
     );
 
 TextStyle primaryText({
@@ -28,7 +43,7 @@ TextStyle primaryText({
   FontWeight weight = FontWeight.normal,
 }) =>
     TextStyle(
-      color: primaryColor,
+      color: textColorSecondary,
       fontSize: fontSize,
       fontWeight: weight,
     );
