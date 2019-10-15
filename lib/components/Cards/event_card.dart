@@ -33,12 +33,12 @@ class _EventCardState extends State<EventCard> {
         elevation: 2.0,
         borderRadius: BorderRadius.all(Radius.circular(20.0)),
         child: Container(
-          height: screenSize.height / 3,
+          height: 225,
           padding: EdgeInsets.all(10.0),
           child: Row(
             children: <Widget>[
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Container(
                   // width: 100.0,
                   padding: EdgeInsets.only(right: 10.0),
@@ -68,7 +68,7 @@ class _EventCardState extends State<EventCard> {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,9 +89,9 @@ class _EventCardState extends State<EventCard> {
                     ),
                     Text(
                       event.title.toUpperCase(),
-                      style: Style.mutedText(fontSize: 15.0),
+                      style: Style.mutedText(fontSize: 12.0),
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
+                      maxLines: 2,
                     ),
                     Container(height: 10.0),
                     Text(
@@ -106,11 +106,11 @@ class _EventCardState extends State<EventCard> {
                     Text(
                       event.description,
                       style: Style.mutedText(
-                        fontSize: 12.0,
+                        fontSize: 10.0,
                         weight: FontWeight.w500,
                       ),
                       textAlign: TextAlign.justify,
-                      maxLines: 7,
+                      maxLines: 5,
                       overflow: TextOverflow.ellipsis,
                     ),
                     Row(

@@ -35,7 +35,7 @@ class CustomAppBar extends StatelessWidget {
                     // TODO: Implement profile picture
                     image: DecorationImage(
                       image: NetworkImage(
-                        "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+                        "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg",
                       ),
                       fit: BoxFit.contain,
                     ),
@@ -47,7 +47,7 @@ class CustomAppBar extends StatelessWidget {
                   width: 10.0,
                 ),
                 Text(
-                  "Usuario",
+                  "Ingresar",
                   style: Style.userNameText,
                 ),
               ],

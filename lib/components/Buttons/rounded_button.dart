@@ -33,7 +33,7 @@ class _EcodsaRoundedButtonState extends State<EcodsaRoundedButton> {
           style: TextStyle(
             color: Style.textColorPrimary,
             fontWeight: FontWeight.w600,
-            fontSize: 12.0,
+            fontSize: 10.0,
           ),
         ),
       ),
