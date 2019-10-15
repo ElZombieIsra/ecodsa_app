@@ -37,16 +37,17 @@ class _HomeScreenState extends State<HomeScreen> {
               filter: ImageFilter.blur(sigmaX: 25.0, sigmaY: 25.0),
               child: Container(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.2, 0.7, 0.9],
-                  colors: [
-                    Color.fromRGBO(255, 255, 255, 0.3),
-                    Color.fromRGBO(47, 56, 80, 0.95),
-                    Color.fromRGBO(20, 29, 47, 1),
-                  ],
-                )),
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.2, 0.7, 0.9],
+                    colors: [
+                      Color.fromRGBO(255, 255, 255, 0.3),
+                      Color.fromRGBO(47, 56, 80, 0.95),
+                      Color.fromRGBO(20, 29, 47, 1),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

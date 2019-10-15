@@ -12,6 +12,7 @@ class EcodsaApi {
   static const PROD_URL = "https://apps.cinteractivo.mx/ecodsa/public/api";
   static const LOCAL_URL = "http://192.168.100.253/ecodsa/public/api";
   static const BASE_URL = Foundation.kReleaseMode ? PROD_URL : LOCAL_URL;
+  // static const BASE_URL = PROD_URL;
   static const LOGIN_URL = BASE_URL + "/login";
   static const KEEPER_URL = BASE_URL + "/shopkeepers";
   static const ACTIVITY_URL = BASE_URL + "/activity";
