@@ -2,6 +2,8 @@ import 'package:ecodsa_app/blocs/events/bloc.dart';
 import 'package:ecodsa_app/components/Cards/event_card.dart';
 import 'package:ecodsa_app/components/Containers/full_height_container.dart';
 import 'package:ecodsa_app/components/appBar.dart';
+import 'package:ecodsa_app/components/search_bar.dart';
+import 'package:ecodsa_app/components/stain_header.dart';
 import 'package:ecodsa_app/models/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,30 +27,32 @@ class _EventsScreenState extends State<EventsScreen> {
           },
           child: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
-            child: FullHeightContainer(
-              child: BlocBuilder(
-                bloc: eventsBloc,
-                builder: (BuildContext ctx, EventsState state) {
-                  if (state is InitialEventsState) {
-                    eventsBloc.dispatch(GetEvents());
-                    return Container();
-                  } else if (state is LoadingEventsState) {
-                    return Center(
+            child: BlocBuilder(
+              bloc: eventsBloc,
+              builder: (BuildContext ctx, EventsState state) {
+                if (state is InitialEventsState) {
+                  eventsBloc.dispatch(GetEvents());
+                  return FullHeightContainer(child: Container());
+                } else if (state is LoadingEventsState) {
+                  return FullHeightContainer(
+                    child: Center(
                       child: CircularProgressIndicator(
                         backgroundColor: Style.primaryColor,
                       ),
-                    );
-                  } else if (state is LoadedEventsState) {
-                    return _buildEventsScreen(state.events);
-                  } else {
-                    return Center(
+                    ),
+                  );
+                } else if (state is LoadedEventsState) {
+                  return _buildEventsScreen(state.events);
+                } else {
+                  return FullHeightContainer(
+                    child: Center(
                       child: Text(
                         state is ErrorEventsState ? state.error : '',
                       ),
-                    );
-                  }
-                },
-              ),
+                    ),
+                  );
+                }
+              },
             ),
           ),
         ),
@@ -63,15 +67,16 @@ class _EventsScreenState extends State<EventsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CustomAppBar(),
-          // TODO: Create search bar
-          // TODO: Create header
+          EcodsaSearchBar(),
+          StainHeader(
+            title: "Eventos",
+            subtitle: "Inscripciones y reservaciones",
+          ),
           // TODO: Create filters
           Container(
             height: 20.0,
           ),
-          ...events.map((event) => EventCard(
-                event: event,
-              )),
+          ...events.map((event) => EventCard(event: event)),
         ],
       ),
     );

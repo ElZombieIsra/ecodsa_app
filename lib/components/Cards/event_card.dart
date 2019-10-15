@@ -1,9 +1,11 @@
 import 'package:ecodsa_app/components/Buttons/rounded_button.dart';
-import 'package:ecodsa_app/components/image_container.dart';
+import 'package:ecodsa_app/components/Containers/image_container.dart';
 import 'package:ecodsa_app/components/start_rating.dart';
 import 'package:ecodsa_app/models/event.dart';
 import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart' as ds;
 
 class EventCard extends StatefulWidget {
   final Event event;
@@ -14,6 +16,13 @@ class EventCard extends StatefulWidget {
 }
 
 class _EventCardState extends State<EventCard> {
+  @override
+  void initState() {
+    super.initState();
+    Intl.defaultLocale = "es_MX";
+    ds.initializeDateFormatting();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -86,7 +95,7 @@ class _EventCardState extends State<EventCard> {
                     ),
                     Container(height: 10.0),
                     Text(
-                      event.dateStart,
+                      _getDates(event.dateStart, event.dateEnd),
                       style: Style.mutedText(fontSize: 10.0),
                     ),
                     Text(
@@ -101,7 +110,7 @@ class _EventCardState extends State<EventCard> {
                         weight: FontWeight.w500,
                       ),
                       textAlign: TextAlign.justify,
-                      maxLines: 5,
+                      maxLines: 7,
                       overflow: TextOverflow.ellipsis,
                     ),
                     Row(
@@ -125,5 +134,19 @@ class _EventCardState extends State<EventCard> {
         ),
       ),
     );
+  }
+
+  String _getDates(String startDate, String endDate) {
+    DateTime start = DateTime.parse(startDate);
+    DateTime end = DateTime.parse(endDate);
+
+    final checkFormat = DateFormat('MMMM');
+    String lastDay = DateFormat("dd MMMM yyyy").format(end);
+    String firstDay;
+    if (checkFormat.format(start) == checkFormat.format(end))
+      firstDay = DateFormat('dd').format(start);
+    else
+      firstDay = DateFormat('dd MMMM').format(start);
+    return "$firstDay - $lastDay";
   }
 }

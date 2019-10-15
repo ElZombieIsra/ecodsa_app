@@ -1,4 +1,4 @@
-import 'package:ecodsa_app/components/image_container.dart';
+import 'package:ecodsa_app/components/Containers/image_container.dart';
 import 'package:ecodsa_app/components/start_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;

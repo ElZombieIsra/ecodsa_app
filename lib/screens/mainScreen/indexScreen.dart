@@ -4,7 +4,7 @@ import 'package:ecodsa_app/components/Cards/landing_feature_card.dart';
 import 'package:ecodsa_app/components/appBar.dart';
 import 'package:ecodsa_app/components/carousel.dart';
 import 'package:ecodsa_app/components/footer.dart';
-import 'package:ecodsa_app/components/image_container.dart';
+import 'package:ecodsa_app/components/Containers/image_container.dart';
 import 'package:ecodsa_app/components/stain.dart';
 import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
@@ -100,6 +100,9 @@ class _IndexScreenState extends State<IndexScreen> {
   }
 
   Widget _buildLandingPage(BuildContext context, Map<String, dynamic> data) {
+    print('Printing data');
+    print(data["features"]);
+    print('Printing data');
     final screenSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(
