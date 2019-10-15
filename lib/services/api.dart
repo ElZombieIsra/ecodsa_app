@@ -13,7 +13,7 @@ class EcodsaApi {
   static const LOCAL_URL = "http://192.168.100.253/ecodsa/public/api";
   static const BASE_URL = Foundation.kReleaseMode ? PROD_URL : LOCAL_URL;
   // static const BASE_URL = PROD_URL;
-  static const LOGIN_URL = BASE_URL + "/login";
+  static const EVENTS_URL = BASE_URL + "/event";
   static const KEEPER_URL = BASE_URL + "/shopkeepers";
   static const ACTIVITY_URL = BASE_URL + "/activity";
 
@@ -30,6 +30,19 @@ class EcodsaApi {
     } catch (e) {
       print(e);
       throw Exception("Ocurrió un error al conectarse al servidor.");
+    }
+  }
+
+  Future<dynamic> getEvents() async {
+    try {
+      var res = await _netUtil.get(EVENTS_URL);
+      if (res.length == 0) {
+        throw Exception("Ocurrió un error al conectarse al servidor");
+      }
+      return res["events"];
+    } catch (e) {
+      print(e);
+      throw Exception("Ocurrió un error al conectarse al servidor");
     }
   }
 }

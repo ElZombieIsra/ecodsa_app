@@ -7,7 +7,6 @@ import 'package:ecodsa_app/components/footer.dart';
 import 'package:ecodsa_app/components/image_container.dart';
 import 'package:ecodsa_app/components/stain.dart';
 import 'package:flutter/material.dart';
-import 'package:ecodsa_app/globals.dart' as globals;
 import 'package:ecodsa_app/style.dart' as Style;
 import 'package:flutter_bloc/flutter_bloc.dart';
 

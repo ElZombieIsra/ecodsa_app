@@ -1,6 +1,6 @@
 import 'package:ecodsa_app/components/image_container.dart';
+import 'package:ecodsa_app/components/start_rating.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:ecodsa_app/style.dart' as Style;
 
 class LandingFeatureCard extends StatelessWidget {
@@ -47,13 +47,7 @@ class LandingFeatureCard extends StatelessWidget {
                       type,
                       style: Style.whiteText(fontSize: 12.0),
                     ),
-                    SmoothStarRating(
-                      rating: rating.toDouble(),
-                      color: Colors.yellow,
-                      borderColor: Colors.yellow,
-                      allowHalfRating: false,
-                      size: 15.0,
-                    ),
+                    CustomStarRating(rating: rating),
                   ],
                 ),
               ),

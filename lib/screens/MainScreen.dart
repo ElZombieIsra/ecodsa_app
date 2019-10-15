@@ -1,4 +1,5 @@
-import 'package:ecodsa_app/screens/indexScreen/indexScreen.dart';
+import 'package:ecodsa_app/screens/mainScreen/eventsScreen.dart';
+import 'package:ecodsa_app/screens/mainScreen/indexScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
 
@@ -11,9 +12,10 @@ class _MainScreenState extends State<MainScreen> {
   int _navigationIndex = 0;
   final List<Widget> _widgets = [
     IndexScreen(),
-    Container(child: Center(child: Text("Soon"))),
-    Container(child: Center(child: Text("Soon"))),
-    Container(child: Center(child: Text("Soon"))),
+    EventsScreen(),
+    Container(
+        child: Center(child: Text("No estás registrado a ningún evento"))),
+    Container(child: Center(child: Text("No tienes ningún evento activo"))),
   ];
 
   @override
