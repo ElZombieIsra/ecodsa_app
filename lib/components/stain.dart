@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:ecodsa_app/style.dart' as Style;
 import 'dart:math' as math;
+
+import 'package:ecodsa_app/style.dart' as Style;
+import 'package:flutter/material.dart';
 
 class Stain extends StatelessWidget {
   @override

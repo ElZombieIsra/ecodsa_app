@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
+import 'package:flutter/material.dart';
 
 class EcodsaSearchBar extends StatelessWidget {
   @override

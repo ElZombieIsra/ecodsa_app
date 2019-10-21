@@ -1,14 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecodsa_app/blocs/landingPage/bloc.dart';
-import 'package:ecodsa_app/components/Cards/landing_feature_card.dart';
-import 'package:ecodsa_app/components/appBar.dart';
-import 'package:ecodsa_app/components/carousel.dart';
-import 'package:ecodsa_app/components/footer.dart';
-import 'package:ecodsa_app/components/Containers/image_container.dart';
-import 'package:ecodsa_app/components/stain.dart';
-import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../blocs/landingPage/bloc.dart';
+import '../../components/Cards/landing_feature_card.dart';
+import '../../components/Containers/image_container.dart';
+import '../../components/appBar.dart';
+import '../../components/carousel.dart';
+import '../../components/footer.dart';
+import '../../components/stain.dart';
 
 class IndexScreen extends StatefulWidget {
   @override

@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:ecodsa_app/services/network.dart';
-// import 'package:ecodsa_app/globals.dart' as globals;
-
 import 'package:flutter/foundation.dart' as Foundation;
+
+import 'network.dart';
 
 class EcodsaApi {
   NetworkService _netUtil = NetworkService();

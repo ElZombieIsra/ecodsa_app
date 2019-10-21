@@ -1,8 +1,10 @@
 import 'dart:async';
-import 'package:ecodsa_app/models/event.dart';
-import 'package:ecodsa_app/services/api.dart';
+
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+
 import './bloc.dart';
+import '../../models/event.dart';
+import '../../services/api.dart';
 
 class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
   final _api = EcodsaApi();

@@ -1,5 +1,6 @@
-import 'package:ecodsa_app/models/event.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../models/event.dart';
 
 abstract class EventsState extends Equatable {
   const EventsState();

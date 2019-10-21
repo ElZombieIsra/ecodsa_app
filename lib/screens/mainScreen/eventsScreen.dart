@@ -1,13 +1,14 @@
-import 'package:ecodsa_app/blocs/events/bloc.dart';
-import 'package:ecodsa_app/components/Cards/event_card.dart';
-import 'package:ecodsa_app/components/Containers/full_height_container.dart';
-import 'package:ecodsa_app/components/appBar.dart';
-import 'package:ecodsa_app/components/search_bar.dart';
-import 'package:ecodsa_app/components/stain_header.dart';
-import 'package:ecodsa_app/models/event.dart';
+import 'package:ecodsa_app/style.dart' as Style;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ecodsa_app/style.dart' as Style;
+
+import '../../blocs/events/bloc.dart';
+import '../../components/Cards/event_card.dart';
+import '../../components/Containers/full_height_container.dart';
+import '../../components/appBar.dart';
+import '../../components/search_bar.dart';
+import '../../components/stain_header.dart';
+import '../../models/event.dart';
 
 class EventsScreen extends StatefulWidget {
   @override

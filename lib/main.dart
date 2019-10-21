@@ -1,10 +1,11 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:bloc/bloc.dart';
-import 'routes.dart';
-import 'style.dart';
+
 import 'globals.dart' as globals;
+import 'routes.dart';
 import 'screens/HomeScreen.dart';
+import 'style.dart';
 
 void main() async {
   BlocSupervisor.delegate = await HydratedBlocDelegate.build();

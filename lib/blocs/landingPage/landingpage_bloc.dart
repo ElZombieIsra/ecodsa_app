@@ -1,9 +1,10 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
-import 'package:ecodsa_app/models/landing_feature.dart';
-import 'package:ecodsa_app/services/api.dart';
+
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+
 import './bloc.dart';
+import '../../models/landing_feature.dart';
+import '../../services/api.dart';
 
 class LandingpageBloc extends HydratedBloc<LandingpageEvent, LandingpageState> {
   final _api = EcodsaApi();

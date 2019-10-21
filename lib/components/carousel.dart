@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecodsa_app/components/Containers/image_container.dart';
 import 'package:flutter/material.dart';
+
+import 'Containers/image_container.dart';
 
 class CustomCarousel extends StatefulWidget {
   final List<dynamic> children;

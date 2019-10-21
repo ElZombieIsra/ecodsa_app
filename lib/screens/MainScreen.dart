@@ -1,7 +1,8 @@
-import 'package:ecodsa_app/screens/mainScreen/eventsScreen.dart';
-import 'package:ecodsa_app/screens/mainScreen/indexScreen.dart';
-import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
+import 'package:flutter/material.dart';
+
+import 'mainScreen/eventsScreen.dart';
+import 'mainScreen/indexScreen.dart';
 
 class MainScreen extends StatefulWidget {
   @override

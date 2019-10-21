@@ -1,11 +1,12 @@
-import 'package:ecodsa_app/components/Buttons/rounded_button.dart';
-import 'package:ecodsa_app/components/Containers/image_container.dart';
-import 'package:ecodsa_app/components/start_rating.dart';
-import 'package:ecodsa_app/models/event.dart';
-import 'package:flutter/material.dart';
 import 'package:ecodsa_app/style.dart' as Style;
-import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart' as ds;
+import 'package:intl/intl.dart';
+
+import '../../models/event.dart';
+import '../Buttons/rounded_button.dart';
+import '../Containers/image_container.dart';
+import '../start_rating.dart';
 
 class EventCard extends StatefulWidget {
   final Event event;
@@ -25,7 +26,7 @@ class _EventCardState extends State<EventCard> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    // final screenSize = MediaQuery.of(context).size;
     final Event event = widget.event;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10.0),
