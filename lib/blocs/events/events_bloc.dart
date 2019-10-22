@@ -8,6 +8,10 @@ import '../../services/api.dart';
 
 class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
   final _api = EcodsaApi();
+  Map<String, dynamic> lastEventsJson;
+  String lastSearch;
+  List<Event> events;
+
   @override
   EventsState get initialState => super.initialState ?? InitialEventsState();
 
@@ -15,12 +19,20 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
   Stream<EventsState> mapEventToState(
     EventsEvent event,
   ) async* {
-    if (event is GetEvents) {
+    if (event is GetEvents && event.searchQuery != lastSearch) {
       yield LoadingEventsState();
       try {
-        List<dynamic> eventsJson = await _api.getEvents();
-        List<Event> events =
-            eventsJson.map((event) => Event.fromJson(event)).toList();
+        events = await _fetchEvents(event.searchQuery);
+        yield LoadedEventsState(events);
+        lastSearch = event.searchQuery;
+      } catch (e) {
+        print(e);
+        yield ErrorEventsState(e.toString());
+      }
+    } else if (event is RefreshEvents) {
+      yield LoadingEventsState();
+      try {
+        events = await _fetchEvents(event.searchQuery);
         yield LoadedEventsState(events);
       } catch (e) {
         print(e);
@@ -29,10 +41,18 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
     }
   }
 
+  Future<List<Event>> _fetchEvents(String query) async {
+    Map<String, dynamic> eventsJson = await _api.getEvents(searchQuery: query);
+    lastEventsJson = eventsJson;
+    return eventsJson["data"]
+        .map<Event>((event) => Event.fromJson(event))
+        .toList();
+  }
+
   @override
   EventsState fromJson(Map<String, dynamic> json) {
     try {
-      final events =
+      events =
           json["events"].map<Event>((event) => Event.fromJson(event)).toList();
       return LoadedEventsState(events);
     } catch (e) {
@@ -44,7 +64,7 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
   @override
   Map<String, dynamic> toJson(EventsState state) {
     if (state is LoadedEventsState) {
-      print('Saving state');
+      // print('Saving state');
       return {
         'events': state.events.map((event) => event.toJson()).toList(),
       };

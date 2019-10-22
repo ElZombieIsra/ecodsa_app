@@ -101,9 +101,6 @@ class _IndexScreenState extends State<IndexScreen> {
   }
 
   Widget _buildLandingPage(BuildContext context, Map<String, dynamic> data) {
-    print('Printing data');
-    print(data["features"]);
-    print('Printing data');
     final screenSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(

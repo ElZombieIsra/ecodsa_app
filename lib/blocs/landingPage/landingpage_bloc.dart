@@ -32,14 +32,11 @@ class LandingpageBloc extends HydratedBloc<LandingpageEvent, LandingpageState> {
 
   Future<Map<String, dynamic>> _fetchLandingPageFromApi() async {
     Map<String, dynamic> data = await _api.getLandingPage();
-    print('fetched data');
     if (data["features"] != null || data["features"].length > 0) {
       data["features"] = data["features"]
           .map<LandingFeature>((feature) => LandingFeature.fromJson(feature))
           .toList();
-      print(data);
     }
-    print('fetched data');
     return data;
   }
 
@@ -50,9 +47,6 @@ class LandingpageBloc extends HydratedBloc<LandingpageEvent, LandingpageState> {
       data["features"] = data["features"]
           .map<LandingFeature>((feature) => LandingFeature.fromJson(feature))
           .toList();
-      print('getting data');
-      print(data["features"]);
-      print('getting data');
       return LoadedLandingPage(data);
     } catch (e) {
       return null;
@@ -65,9 +59,6 @@ class LandingpageBloc extends HydratedBloc<LandingpageEvent, LandingpageState> {
       var json = state.data;
       // json["features"] =
       //     json["features"].map((feature) => feature.toJson()).toList();
-      print('saving data');
-      print(json["features"]);
-      print('saving data');
       return json;
     } else {
       return null;

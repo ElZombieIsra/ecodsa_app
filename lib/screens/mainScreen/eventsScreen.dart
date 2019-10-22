@@ -16,6 +16,8 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
+  final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final eventsBloc = EventsBloc();
@@ -24,36 +26,39 @@ class _EventsScreenState extends State<EventsScreen> {
         builder: (context) => eventsBloc,
         child: RefreshIndicator(
           onRefresh: () async {
-            eventsBloc.dispatch(GetEvents());
+            eventsBloc.dispatch(RefreshEvents(searchQuery: controller.text));
           },
           child: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
-            child: BlocBuilder(
-              bloc: eventsBloc,
-              builder: (BuildContext ctx, EventsState state) {
-                if (state is InitialEventsState) {
-                  eventsBloc.dispatch(GetEvents());
-                  return FullHeightContainer(child: Container());
-                } else if (state is LoadingEventsState) {
-                  return FullHeightContainer(
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: Style.primaryColor,
+            child: BlocListener<EventsBloc, EventsState>(
+              listener: (ctx, state) {},
+              child: BlocBuilder(
+                bloc: eventsBloc,
+                builder: (BuildContext ctx, EventsState state) {
+                  if (state is InitialEventsState) {
+                    eventsBloc.dispatch(GetEvents());
+                    return FullHeightContainer(child: Container());
+                  } else if (state is LoadingEventsState) {
+                    return FullHeightContainer(
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Style.primaryColor,
+                        ),
                       ),
-                    ),
-                  );
-                } else if (state is LoadedEventsState) {
-                  return _buildEventsScreen(state.events);
-                } else {
-                  return FullHeightContainer(
-                    child: Center(
-                      child: Text(
-                        state is ErrorEventsState ? state.error : '',
+                    );
+                  } else if (state is LoadedEventsState) {
+                    return _buildEventsScreen(state.events, controller);
+                  } else {
+                    return FullHeightContainer(
+                      child: Center(
+                        child: Text(
+                          state is ErrorEventsState ? state.error : '',
+                        ),
                       ),
-                    ),
-                  );
-                }
-              },
+                    );
+                  }
+                },
+              ),
             ),
           ),
         ),
@@ -61,14 +66,19 @@ class _EventsScreenState extends State<EventsScreen> {
     );
   }
 
-  Widget _buildEventsScreen(List<Event> events) {
+  Widget _buildEventsScreen(
+    List<Event> events,
+    TextEditingController controller,
+  ) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CustomAppBar(),
-          EcodsaSearchBar(),
+          EcodsaSearchBar(
+            controller: controller,
+          ),
           StainHeader(
             title: "Eventos",
             subtitle: "Inscripciones y reservaciones",

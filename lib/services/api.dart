@@ -32,12 +32,13 @@ class EcodsaApi {
     }
   }
 
-  Future<dynamic> getEvents() async {
+  Future<dynamic> getEvents({String searchQuery}) async {
     try {
-      var res = await _netUtil.get(EVENTS_URL);
-      if (res.length == 0) {
+      String url = "$EVENTS_URL";
+      if (searchQuery != null) url += "?searchQuery=$searchQuery";
+      var res = await _netUtil.get(url);
+      if (res.length == 0)
         throw Exception("Ocurrió un error al conectarse al servidor");
-      }
       return res["events"];
     } catch (e) {
       print(e);
