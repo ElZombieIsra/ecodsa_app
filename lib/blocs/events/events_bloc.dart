@@ -38,6 +38,20 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
         print(e);
         yield ErrorEventsState(e.toString());
       }
+    } else if (event is FilterEvents) {
+      yield LoadingEventsState();
+      if (event.filters['orderBy'] != null) {
+        switch (event.filters['orderBy']) {
+          case 1:
+            events.sort((a, b) => a.dateStart.compareTo(b.dateStart));
+            break;
+          case 2:
+            events.sort((a, b) => b.dateStart.compareTo(a.dateStart));
+            break;
+          default:
+        }
+      }
+      yield LoadedEventsState(events);
     }
   }
 

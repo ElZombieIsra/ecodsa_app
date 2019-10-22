@@ -1,3 +1,4 @@
+import 'package:ecodsa_app/components/filters.dart';
 import 'package:ecodsa_app/style.dart' as Style;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -83,10 +84,7 @@ class _EventsScreenState extends State<EventsScreen> {
             title: "Eventos",
             subtitle: "Inscripciones y reservaciones",
           ),
-          // TODO: Create filters
-          Container(
-            height: 20.0,
-          ),
+          EcodsaEventsFilters(),
           ...events.map((event) => EventCard(event: event)),
         ],
       ),

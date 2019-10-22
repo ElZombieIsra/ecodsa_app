@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 abstract class EventsEvent extends Equatable {
-  const EventsEvent();
-
   @override
   List<Object> get props => null;
 }
@@ -23,4 +21,13 @@ class RefreshEvents extends EventsEvent {
 
   @override
   List<Object> get props => [this.searchQuery];
+}
+
+class FilterEvents extends EventsEvent {
+  final Map<String, dynamic> filters;
+
+  FilterEvents(this.filters);
+
+  @override
+  List<Object> get props => [this.filters];
 }
