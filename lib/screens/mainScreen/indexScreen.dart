@@ -112,8 +112,8 @@ class _IndexScreenState extends State<IndexScreen> {
         children: <Widget>[
           CustomAppBar(),
           CustomCarousel(
+            data["images"],
             heigth: screenSize.height / 3,
-            children: data["images"],
           ),
           Text(data["title"], style: Style.title1),
           Text(
@@ -203,20 +203,7 @@ class _IndexScreenState extends State<IndexScreen> {
     }
     return Container(
       padding: EdgeInsets.all(8.0),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            child: Stain(),
-            // left: 0.0,
-            right: 0.0,
-            top: 250.0,
-            bottom: 0.0,
-          ),
-          Column(
-            children: _rows,
-          ),
-        ],
-      ),
+      child: StainContainer(Column(children: _rows)),
     );
   }
 

@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'Containers/image_container.dart';
 
 class CustomCarousel extends StatefulWidget {
+  /// Receives a list of image urls to display in the carousel
   final List<dynamic> children;
   final Function onPageChanged;
   final double heigth;
 
-  const CustomCarousel({
+  const CustomCarousel(
+    this.children, {
     Key key,
-    @required this.children,
     this.onPageChanged,
     this.heigth,
   }) : super(key: key);
