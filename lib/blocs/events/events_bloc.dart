@@ -11,6 +11,8 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
   Map<String, dynamic> lastEventsJson;
   String lastSearch;
   List<Event> events;
+  String nextPage;
+  bool loading = false;
 
   @override
   EventsState get initialState => super.initialState ?? InitialEventsState();
@@ -23,7 +25,8 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
       yield LoadingEventsState();
       try {
         events = await _fetchEvents(event.searchQuery);
-        yield LoadedEventsState(events);
+        yield LoadedEventsState(events,
+            hasNextPage: nextPage != null ? true : false);
         lastSearch = event.searchQuery;
       } catch (e) {
         print(e);
@@ -33,7 +36,8 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
       yield LoadingEventsState();
       try {
         events = await _fetchEvents(event.searchQuery);
-        yield LoadedEventsState(events);
+        yield LoadedEventsState(events,
+            hasNextPage: nextPage != null ? true : false);
       } catch (e) {
         print(e);
         yield ErrorEventsState(e.toString());
@@ -49,15 +53,29 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
             events.sort((a, b) => b.dateStart.compareTo(a.dateStart));
             break;
           default:
+            yield ErrorEventsState("No se ha encontrado ese filtro");
+            break;
         }
+        yield LoadedEventsState(events,
+            hasNextPage: nextPage != null ? true : false);
       }
-      yield LoadedEventsState(events);
+    } else if (event is FetchNextEvents && !loading && nextPage != null) {
+      loading = true;
+      print("Next events");
+      events.addAll(await _fetchEvents(event.searchQuery, url: nextPage));
+      yield LoadedEventsState(events,
+          hasNextPage: nextPage != null ? true : false);
+      loading = false;
     }
   }
 
-  Future<List<Event>> _fetchEvents(String query) async {
-    Map<String, dynamic> eventsJson = await _api.getEvents(searchQuery: query);
+  Future<List<Event>> _fetchEvents(String query, {String url}) async {
+    Map<String, dynamic> eventsJson = await _api.getEvents(
+      searchQuery: query,
+      nextUrl: url,
+    );
     lastEventsJson = eventsJson;
+    nextPage = eventsJson["next_page_url"];
     return eventsJson["data"]
         .map<Event>((event) => Event.fromJson(event))
         .toList();

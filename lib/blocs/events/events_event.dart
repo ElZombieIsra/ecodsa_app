@@ -31,3 +31,12 @@ class FilterEvents extends EventsEvent {
   @override
   List<Object> get props => [this.filters];
 }
+
+class FetchNextEvents extends EventsEvent {
+  final String searchQuery;
+
+  FetchNextEvents({this.searchQuery});
+
+  @override
+  List<Object> get props => [this.searchQuery];
+}

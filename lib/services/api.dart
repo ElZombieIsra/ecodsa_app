@@ -32,9 +32,9 @@ class EcodsaApi {
     }
   }
 
-  Future<dynamic> getEvents({String searchQuery}) async {
+  Future<dynamic> getEvents({String searchQuery, String nextUrl}) async {
     try {
-      String url = "$EVENTS_URL";
+      String url = nextUrl != null ? nextUrl : "$EVENTS_URL";
       if (searchQuery != null) url += "?searchQuery=$searchQuery";
       var res = await _netUtil.get(url);
       if (res.length == 0)

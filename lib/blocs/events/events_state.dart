@@ -15,11 +15,15 @@ class LoadingEventsState extends EventsState {}
 
 class LoadedEventsState extends EventsState {
   final List<Event> events;
+  final bool hasNextPage;
 
-  LoadedEventsState(this.events);
+  LoadedEventsState(
+    this.events, {
+    this.hasNextPage = false,
+  });
 
   @override
-  List<Object> get props => [this.events];
+  List<Object> get props => [this.events, this.hasNextPage];
 }
 
 class ErrorEventsState extends EventsState {
