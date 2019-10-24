@@ -7,12 +7,20 @@ class StainContainer extends StatelessWidget {
   final Widget child;
   final double size;
   final double angle;
+  final double bottom;
+  final double top;
+  final double right;
+  final double left;
 
   const StainContainer(
     this.child, {
     Key key,
     this.size = 200.0,
     this.angle = 50,
+    this.bottom = 0.0,
+    this.top,
+    this.right = 0.0,
+    this.left = 0.0,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -23,10 +31,10 @@ class StainContainer extends StatelessWidget {
             size: size,
             angle: angle,
           ),
-          // left: 0.0,
-          right: 0.0,
-          top: size,
-          bottom: 0.0,
+          left: left,
+          right: right,
+          top: top ?? size,
+          bottom: bottom,
         ),
         child
       ],

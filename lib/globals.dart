@@ -1,6 +1,7 @@
 // Add global variables to use
 library globals;
 
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart' as ds;
 
@@ -25,3 +26,12 @@ String formatDates(String startDate, String endDate) {
     firstDay = DateFormat('dd MMMM').format(start);
   return "$firstDay - $lastDay";
 }
+
+Widget separator({
+  double width = 1.0,
+  double height = 10.0,
+}) =>
+    Container(
+      width: width,
+      height: height,
+    );

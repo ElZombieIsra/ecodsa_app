@@ -4,10 +4,16 @@ import 'package:flutter/material.dart';
 class EcodsaRoundedButton extends StatefulWidget {
   final Function onPressed;
   final String text;
+  final double height;
+  final double width;
+  final double fontSize;
   EcodsaRoundedButton({
     Key key,
     this.onPressed,
     @required this.text,
+    this.height = 20.0,
+    this.width = 50.0,
+    this.fontSize = 18.0,
   }) : super(key: key);
 
   _EcodsaRoundedButtonState createState() => _EcodsaRoundedButtonState();
@@ -17,7 +23,8 @@ class _EcodsaRoundedButtonState extends State<EcodsaRoundedButton> {
   @override
   Widget build(BuildContext context) {
     return ButtonTheme(
-      height: 10.0,
+      height: widget.height,
+      minWidth: widget.width,
       child: RaisedButton(
         color: Style.primaryColor,
         elevation: 5.0,
@@ -33,7 +40,7 @@ class _EcodsaRoundedButtonState extends State<EcodsaRoundedButton> {
           style: TextStyle(
             color: Style.textColorPrimary,
             fontWeight: FontWeight.w600,
-            fontSize: 10.0,
+            fontSize: widget.fontSize,
           ),
         ),
       ),

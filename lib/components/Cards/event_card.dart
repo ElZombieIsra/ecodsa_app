@@ -124,10 +124,14 @@ class _EventCardState extends State<EventCard> {
                         children: <Widget>[
                           EcodsaRoundedButton(
                             text: 'Reservaciones',
+                            height: 10.0,
+                            fontSize: 10.0,
                             onPressed: () {},
                           ),
                           EcodsaRoundedButton(
                             text: 'Inscripciones',
+                            height: 10.0,
+                            fontSize: 10.0,
                             onPressed: () {},
                           ),
                         ],

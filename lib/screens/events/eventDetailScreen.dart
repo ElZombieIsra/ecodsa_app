@@ -1,4 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecodsa_app/components/Containers/contact_form_container.dart';
 import 'package:ecodsa_app/components/Containers/image_container.dart';
+import 'package:ecodsa_app/components/TextFields/contact_form_textfield.dart';
 import 'package:ecodsa_app/components/appBar.dart';
 import 'package:ecodsa_app/components/carousel.dart';
 import 'package:ecodsa_app/components/stain.dart';
@@ -106,24 +109,37 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             // TODO: Change stain to fixed image
             Container(
               margin: EdgeInsets.symmetric(vertical: 30.0),
-              // height: screenSize.height / 1.5,
+              height: 300,
               child: StainContainer(
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      "${widget.event.description} \n\n¿A quién va dirigido este evento? \n\n\t\tIngenieros civiles\n\t\tArquitectos\n\t\tDesarrolladores inmobiliarios\n\t\tDiseñadores estructurales\n\t\tConstructores\n\t\tEmpresarios industriales del concreto\n\t\tSector público\n\t\tProveedores especializados\n\t\tMaestros y estudiantes",
-                      style: Style.whiteText(
-                        fontSize: 13,
-                        weight: FontWeight.bold,
-                      ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40.0),
+                  child: Text(
+                    "${widget.event.description}",
+                    style: Style.whiteText(
+                      fontSize: 13,
+                      weight: FontWeight.bold,
                     ),
-                  ],
+                  ),
                 ),
-                size: screenSize.height / 3.3,
-                angle: 65.0,
+                size: 130,
+                angle: 80.0,
+                top: 140.0,
+                right: 50.0,
+                left: 250.0,
+                bottom: 0.0,
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(top: 40.0, bottom: 20.0),
+              child: Text(
+                "Conectividad\n\nLa ciudad de León cuenta con excelente conectividad aérea y terrestre que convierte a León en uno de los destinos de mejor acceso a nivel nacional e internacional.\n\nLa central de autobuses cuenta con servicios a las principales ciudades del estado, el país y la frontera de la unión americana; localizada a 5 minutos de Polifórum.\n\nEl 53% de los asistentes llegan por vía terrestre.\n\nLeón cuenta con conexiones aéreas vía San Francisco, Los Ángeles, Dallas, Atlanta, Houston, Ciudad de México y Cancún. 231 vuelos semanales 144 vuelos nacionales 87 vuelos internacionales 10 aerolíneas",
+                style: Style.mutedText(
+                  fontSize: 13,
+                  weight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ContactFormContainer(),
           ],
         ),
       ),
