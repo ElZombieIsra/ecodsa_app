@@ -119,12 +119,15 @@ class _ContactFormContainerState extends State<ContactFormContainer> {
                   ),
                 ),
                 Center(
-                  child: Text(
-                    "Términos y condiciones",
-                    style: Style.primaryText(
-                      fontSize: 10.0,
-                      weight: FontWeight.w600,
+                  child: FlatButton(
+                    child: Text(
+                      "Términos y condiciones",
+                      style: Style.primaryText(
+                        fontSize: 10.0,
+                        weight: FontWeight.w600,
+                      ),
                     ),
+                    onPressed: () => Navigator.pushNamed(context, "/terms"),
                   ),
                 )
               ],

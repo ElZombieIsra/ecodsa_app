@@ -113,11 +113,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               child: StainContainer(
                 Padding(
                   padding: const EdgeInsets.only(top: 40.0),
-                  child: Text(
-                    "${widget.event.description}",
-                    style: Style.whiteText(
-                      fontSize: 13,
-                      weight: FontWeight.bold,
+                  child: Center(
+                    child: Text(
+                      "${widget.event.description}",
+                      style: Style.whiteText(
+                        fontSize: 13,
+                        weight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
