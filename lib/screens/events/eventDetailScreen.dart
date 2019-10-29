@@ -1,7 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecodsa_app/components/Containers/contact_form_container.dart';
 import 'package:ecodsa_app/components/Containers/image_container.dart';
-import 'package:ecodsa_app/components/TextFields/contact_form_textfield.dart';
 import 'package:ecodsa_app/components/appBar.dart';
 import 'package:ecodsa_app/components/carousel.dart';
 import 'package:ecodsa_app/components/stain.dart';

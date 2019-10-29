@@ -31,7 +31,7 @@ class _EcodsaRoundedButtonState extends State<EcodsaRoundedButton> {
         padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(20.0),
+            Radius.circular(50.0),
           ),
         ),
         onPressed: widget.onPressed,

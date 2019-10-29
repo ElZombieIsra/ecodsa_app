@@ -19,8 +19,7 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         FlatButton(
-          // TODO: Implement Profile Route
-          onPressed: () {},
+          onPressed: () => Navigator.pushNamed(context, "/login"),
           padding: EdgeInsets.zero,
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
