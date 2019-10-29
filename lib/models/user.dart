@@ -18,8 +18,8 @@ class User extends Equatable {
 
   User(
     this.email,
-    this.name,
-    this.password, {
+    this.name, {
+    this.password,
     this.accessToken,
     this.refreshToken,
   });

@@ -11,7 +11,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
   return User(
     json['email'] as String,
     json['name'] as String,
-    json['password'] as String,
+    password: json['password'] as String,
     accessToken: json['access_token'] as String,
     refreshToken: json['refresh_token'] as String,
   );

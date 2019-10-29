@@ -7,10 +7,12 @@ class EcodsaLoginTextfield extends StatelessWidget {
   final Widget suffix;
   final TextInputType keyboardType;
   final bool obscureText;
+  final TextEditingController controller;
 
   const EcodsaLoginTextfield({
     Key key,
     @required this.icon,
+    @required this.controller,
     this.hint,
     this.suffix,
     this.keyboardType,
