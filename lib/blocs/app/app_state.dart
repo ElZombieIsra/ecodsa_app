@@ -1,3 +1,4 @@
+import 'package:ecodsa_app/models/user.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class AppState extends Equatable {
@@ -9,10 +10,11 @@ abstract class AppState extends Equatable {
 class InitialAppState extends AppState {}
 
 class InitedAppState extends AppState {
-  final String email;
+  final User user;
+  final bool loggedIn;
 
-  InitedAppState(this.email);
+  InitedAppState(this.user, this.loggedIn);
 
   @override
-  List<Object> get props => [this.email];
+  List<Object> get props => [this.user, this.loggedIn];
 }

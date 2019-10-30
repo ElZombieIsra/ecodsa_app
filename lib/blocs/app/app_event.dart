@@ -1,3 +1,4 @@
+import 'package:ecodsa_app/models/user.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class AppEvent extends Equatable {
@@ -7,3 +8,12 @@ abstract class AppEvent extends Equatable {
 }
 
 class InitAppEvent extends AppEvent {}
+
+class UserLoggedInAppEvent extends AppEvent {
+  final User user;
+
+  UserLoggedInAppEvent(this.user);
+
+  @override
+  List<Object> get props => [this.user];
+}

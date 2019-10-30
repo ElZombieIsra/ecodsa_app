@@ -7,10 +7,12 @@ part of 'user.dart';
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, requiredKeys: const ['name', 'email']);
+  $checkKeys(json, requiredKeys: const ['name']);
   return User(
-    json['email'] as String,
-    json['name'] as String,
+    email: json['email'] as String,
+    name: json['name'] as String,
+    id: json['id'] as int,
+    profileImage: json['profile_image'] as String,
     password: json['password'] as String,
     accessToken: json['access_token'] as String,
     refreshToken: json['refresh_token'] as String,
@@ -18,9 +20,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'email': instance.email,
       'password': instance.password,
       'access_token': instance.accessToken,
       'refresh_token': instance.refreshToken,
+      'profile_image': instance.profileImage,
     };

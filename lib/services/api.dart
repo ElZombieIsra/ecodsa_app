@@ -1,4 +1,5 @@
 import 'dart:async';
+// import 'dart:convert';
 
 import 'package:ecodsa_app/models/user.dart';
 import 'package:ecodsa_app/services/oauth.dart';
@@ -62,7 +63,10 @@ class EcodsaApi {
       if (res["token_type"] == null) {
         throw Exception("Ocurrió un error al registarte");
       }
-      return User.fromJson(res);
+      return await getUser(
+        accessToken: res["access_token"],
+        refreshToken: res["refresh_token"],
+      );
     } catch (e) {
       print(e.toString());
       throw Exception("Ocurrió un error al registarte");
@@ -79,13 +83,30 @@ class EcodsaApi {
         'password': password,
         'scope': '*'
       });
-      if (res["error"] != null) {
-        throw Exception(res["message"]);
-      }
-      return User.fromJson(res);
+
+      return await getUser(
+        accessToken: res["access_token"],
+        refreshToken: res["refresh_token"],
+      );
     } catch (e) {
       print(e.toString());
       throw Exception("Ocurrió un error al iniciar sesión");
+    }
+  }
+
+  Future<User> getUser({String accessToken, String refreshToken}) async {
+    try {
+      Map<String, String> headers = {'Authorization': "Bearer $accessToken}"};
+      var res2 = await _netUtil.get(
+        "$API_URL/user",
+        headers: headers,
+      );
+      res2['access_token'] = accessToken;
+      res2['refresh_token'] = refreshToken;
+      return User.fromJson(res2);
+    } catch (e) {
+      print(e);
+      throw Exception("Error al obtener el usuario");
     }
   }
 }

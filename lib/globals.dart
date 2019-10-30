@@ -1,6 +1,7 @@
 // Add global variables to use
 library globals;
 
+import 'package:ecodsa_app/blocs/app/app_bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart' as ds;
@@ -35,3 +36,5 @@ Widget separator({
       width: width,
       height: height,
     );
+
+AppBloc appBloc;

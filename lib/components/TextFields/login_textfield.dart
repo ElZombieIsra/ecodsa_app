@@ -23,6 +23,7 @@ class EcodsaLoginTextfield extends StatelessWidget {
     return TextField(
       obscureText: obscureText ?? false,
       keyboardType: keyboardType,
+      controller: controller,
       decoration: InputDecoration(
         hintText: hint,
         icon: icon,

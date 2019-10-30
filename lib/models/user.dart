@@ -5,9 +5,11 @@ part 'user.g.dart';
 
 @JsonSerializable()
 class User extends Equatable {
+  @JsonKey(nullable: true)
+  final int id;
   @JsonKey(required: true)
   final String name;
-  @JsonKey(required: true)
+  @JsonKey(nullable: true)
   final String email;
   @JsonKey(nullable: true)
   final String password;
@@ -15,10 +17,14 @@ class User extends Equatable {
   final String accessToken;
   @JsonKey(nullable: true, name: 'refresh_token')
   final String refreshToken;
+  @JsonKey(nullable: true, name: 'profile_image')
+  final String profileImage;
 
-  User(
+  User({
     this.email,
-    this.name, {
+    this.name,
+    this.id,
+    this.profileImage,
     this.password,
     this.accessToken,
     this.refreshToken,

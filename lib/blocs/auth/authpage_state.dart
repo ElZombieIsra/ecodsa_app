@@ -19,3 +19,12 @@ class LoadedAuthpageState extends AuthpageState {
   @override
   List<Object> get props => [this.user];
 }
+
+class ErrorAuthpageState extends AuthpageState {
+  final dynamic error;
+
+  ErrorAuthpageState(this.error);
+
+  @override
+  List<Object> get props => [this.error];
+}

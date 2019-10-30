@@ -17,8 +17,20 @@ class AuthpageBloc extends Bloc<AuthpageEvent, AuthpageState> {
   ) async* {
     if (event is AuthPageRegister) {
       yield LoadingAuthpageState();
-      User user = await api.register(event.name, event.email, event.password);
-      yield LoadedAuthpageState(user);
+      try {
+        User user = await api.register(event.name, event.email, event.password);
+        yield LoadedAuthpageState(user);
+      } catch (e) {
+        yield ErrorAuthpageState(e.toString());
+      }
+    } else if (event is AuthPageLogin) {
+      yield LoadingAuthpageState();
+      try {
+        User user = await api.login(event.email, event.password);
+        yield LoadedAuthpageState(user);
+      } catch (e) {
+        yield ErrorAuthpageState(e.toString());
+      }
     }
   }
 }

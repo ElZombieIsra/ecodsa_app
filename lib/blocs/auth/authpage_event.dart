@@ -16,3 +16,13 @@ class AuthPageRegister extends AuthpageEvent {
   @override
   List<Object> get props => [this.name, this.email, this.password];
 }
+
+class AuthPageLogin extends AuthpageEvent {
+  final String email;
+  final String password;
+
+  AuthPageLogin(this.email, this.password);
+
+  @override
+  List<Object> get props => [this.email, this.password];
+}

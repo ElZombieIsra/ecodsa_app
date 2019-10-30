@@ -203,7 +203,10 @@ class _IndexScreenState extends State<IndexScreen> {
     }
     return Container(
       padding: EdgeInsets.all(8.0),
-      child: StainContainer(Column(children: _rows)),
+      child: StainContainer(
+        Column(children: _rows),
+        left: 250.0,
+      ),
     );
   }
 
