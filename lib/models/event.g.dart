@@ -12,7 +12,8 @@ Event _$EventFromJson(Map<String, dynamic> json) {
     'description',
     'image_url',
     'date_start',
-    'date_end'
+    'date_end',
+    'status'
   ]);
   return Event(
     title: json['title'] as String,
@@ -24,6 +25,8 @@ Event _$EventFromJson(Map<String, dynamic> json) {
     logoUrl: json['logo_url'] as String,
     type: json['type'] as String ?? 'Evento',
     rating: json['rating'] as int ?? 5,
+    status: json['status'] as int ?? 1,
+    category: json['category'] as int,
   );
 }
 
@@ -37,4 +40,6 @@ Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
       'logo_url': instance.logoUrl,
       'type': instance.type,
       'rating': instance.rating,
+      'category': instance.category,
+      'status': instance.status,
     };

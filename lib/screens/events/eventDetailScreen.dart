@@ -1,4 +1,5 @@
-import 'package:ecodsa_app/components/Containers/contact_form_container.dart';
+import 'package:ecodsa_app/components/Buttons/rounded_button.dart';
+// import 'package:ecodsa_app/components/Containers/contact_form_container.dart';
 import 'package:ecodsa_app/components/Containers/image_container.dart';
 import 'package:ecodsa_app/components/appBar.dart';
 import 'package:ecodsa_app/components/carousel.dart';
@@ -139,7 +140,35 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 ),
               ),
             ),
-            ContactFormContainer(),
+            // ContactFormContainer(),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20.0),
+              child: EcodsaRoundedButton(
+                height: 40.0,
+                width: 300.0,
+                fontSize: 16.0,
+                text: "Inscribirse",
+                onPressed: () {},
+              ),
+            ),
+            Center(
+              child: Text(
+                'Consulta nuestro',
+                style: Style.mutedText(fontSize: 10.0),
+              ),
+            ),
+            Center(
+              child: FlatButton(
+                child: Text(
+                  "Aviso de privacidad",
+                  style: Style.primaryText(
+                    fontSize: 10.0,
+                    weight: FontWeight.w600,
+                  ),
+                ),
+                onPressed: () => Navigator.pushNamed(context, "/privacy"),
+              ),
+            )
           ],
         ),
       ),

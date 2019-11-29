@@ -11,6 +11,7 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
   Map<String, dynamic> lastEventsJson;
   String lastSearch;
   List<Event> events;
+  List<Event> fullEvents;
   String nextPage;
   bool loading = false;
 
@@ -44,6 +45,7 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
       }
     } else if (event is FilterEvents) {
       yield LoadingEventsState();
+      // TODO: Fix this logic to filter from all events
       if (event.filters['orderBy'] != null) {
         switch (event.filters['orderBy']) {
           case 1:
@@ -57,6 +59,13 @@ class EventsBloc extends HydratedBloc<EventsEvent, EventsState> {
             break;
         }
         yield LoadedEventsState(events,
+            hasNextPage: nextPage != null ? true : false);
+      }
+      if (event.filters['category'] != null) {
+        yield LoadedEventsState(
+            events
+                .where((_event) => _event.category == event.filters['category'])
+                .toList(),
             hasNextPage: nextPage != null ? true : false);
       }
     } else if (event is FetchNextEvents && !loading && nextPage != null) {

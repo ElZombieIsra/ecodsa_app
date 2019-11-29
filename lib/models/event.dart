@@ -25,6 +25,11 @@ class Event extends Equatable {
   final String type;
   @JsonKey(defaultValue: 5)
   final int rating;
+  @JsonKey(nullable: true)
+  final int category;
+
+  @JsonKey(defaultValue: 1, required: true)
+  final int status;
 
   Event({
     @required this.title,
@@ -36,6 +41,8 @@ class Event extends Equatable {
     this.logoUrl,
     this.type,
     this.rating,
+    this.status = 1,
+    this.category,
   });
 
   @override
@@ -49,6 +56,8 @@ class Event extends Equatable {
         logoUrl,
         type,
         rating,
+        status,
+        category,
       ];
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);

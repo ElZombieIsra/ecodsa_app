@@ -12,7 +12,7 @@ class EcodsaApi {
 
   static const PC_LOCALHOST_URL = "http://10.0.2.2";
   static const PROD_URL = "https://apps.cinteractivo.mx/ecodsa/public";
-  static const LOCAL_URL = "http://192.168.100.253/ecodsa/public";
+  static const LOCAL_URL = "http://192.168.100.30/ecodsa/public";
   static const BASE_URL = Foundation.kReleaseMode ? PROD_URL : LOCAL_URL;
   // static const BASE_URL = PROD_URL;
   static const API_URL = "$BASE_URL/api";
@@ -50,6 +50,15 @@ class EcodsaApi {
     } catch (e) {
       print(e);
       throw Exception("Ocurrió un error al conectarse al servidor");
+    }
+  }
+
+  Future<dynamic> getCategories() async {
+    try {
+      var res = await _netUtil.get("$API_URL/categories");
+      return res;
+    } catch (e) {
+      throw Exception("Error");
     }
   }
 
