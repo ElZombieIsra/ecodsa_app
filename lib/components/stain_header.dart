@@ -24,7 +24,7 @@ class StainHeader extends StatelessWidget {
     if (subtitle != null) {
       _children.add(Text(
         subtitle,
-        style: Style.mutedText(fontSize: 20.0),
+        style: Style.mutedText(fontSize: 15.0),
       ));
     }
     return Container(

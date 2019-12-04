@@ -1,3 +1,4 @@
+import 'package:ecodsa_app/screens/profile/profileInfoScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/MainScreen.dart';
@@ -16,4 +17,5 @@ Map<String, WidgetBuilder> routes = {
   "/privacy": (BuildContext context) => EcodsaPrivacyScreen(),
   "/login": (BuildContext context) => AuthScreen(),
   "/profile": (BuildContext context) => ProfileScreen(),
+  "/profile/info": (BuildContext context) => ProfileInfoScreen(),
 };

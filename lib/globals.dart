@@ -41,7 +41,12 @@ Widget separator({
 AppBloc appBloc;
 
 void showAlert(BuildContext context, String message) {
-  Scaffold.of(context).showSnackBar(SnackBar(
-    content: Text(message),
-  ));
+  Builder(
+    builder: (BuildContext ctx) {
+      Scaffold.of(ctx).showSnackBar(SnackBar(
+        content: Text(message),
+      ));
+      return Container();
+    },
+  );
 }

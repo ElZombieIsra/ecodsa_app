@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:ecodsa_app/models/user.dart';
+import 'package:ecodsa_app/services/api.dart';
 import 'package:flutter/material.dart';
 import '../globals.dart' as globals;
 import '../style.dart' as Style;
@@ -10,11 +12,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void initApp() async {
+    try {
+      if (globals.appBloc.user != null) {
+        User _user = await EcodsaApi()
+            .getUser(accessToken: globals.appBloc.user.accessToken);
+        globals.appBloc.user = _user;
+      }
+      Navigator.pushReplacementNamed(context, "/main");
+    } catch (e) {
+      print(e);
+      globals.showAlert(
+          context, "Ocurrió un error al conectar con el servidor. Error: $e");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2))
-        .then((_) => Navigator.pushReplacementNamed(context, "/main"));
+    initApp();
   }
 
   @override

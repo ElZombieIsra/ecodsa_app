@@ -82,7 +82,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 EcodsaRoundedButton(
                   text: "Cambiar información",
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.pushNamed(context, "/profile/info"),
                 ),
                 EcodsaRoundedButton(
                   text: "Mis eventos",

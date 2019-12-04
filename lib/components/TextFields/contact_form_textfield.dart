@@ -13,7 +13,7 @@ class ContactTextFormField extends StatefulWidget {
 class _ContactTextFormFieldState extends State<ContactTextFormField> {
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: widget.controller ?? TextEditingController(),
       decoration: InputDecoration(
         hintText: widget.hint,
