@@ -35,12 +35,15 @@ class _EcodsaRoundedButtonState extends State<EcodsaRoundedButton> {
           ),
         ),
         onPressed: widget.onPressed,
-        child: Text(
-          widget.text,
-          style: TextStyle(
-            color: Style.textColorPrimary,
-            fontWeight: FontWeight.w600,
-            fontSize: widget.fontSize,
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Text(
+            widget.text,
+            style: TextStyle(
+              color: Style.textColorPrimary,
+              fontWeight: FontWeight.w600,
+              fontSize: widget.fontSize,
+            ),
           ),
         ),
       ),

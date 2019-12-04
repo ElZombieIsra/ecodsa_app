@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:ecodsa_app/models/user.dart';
 import 'package:ecodsa_app/services/oauth.dart';
 import 'package:flutter/foundation.dart' as Foundation;
+import 'package:ecodsa_app/globals.dart' as globals;
 
 import 'network.dart';
 
@@ -58,6 +59,7 @@ class EcodsaApi {
       var res = await _netUtil.get("$API_URL/categories");
       return res;
     } catch (e) {
+      print(e);
       throw Exception("Error");
     }
   }
@@ -103,7 +105,12 @@ class EcodsaApi {
     }
   }
 
-  Future<User> getUser({String accessToken, String refreshToken}) async {
+  Future<User> getUser({String accessToken, String refreshToken = ''}) async {
+    if (accessToken == null &&
+        globals.appBloc != null &&
+        globals.appBloc.user != null) {
+      accessToken = globals.appBloc.user.accessToken;
+    }
     try {
       Map<String, String> headers = {'Authorization': "Bearer $accessToken}"};
       var res2 = await _netUtil.get(

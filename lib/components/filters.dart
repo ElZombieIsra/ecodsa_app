@@ -24,11 +24,13 @@ class _EcodsaEventsFiltersState extends State<EcodsaEventsFilters> {
 
   void _createFilters() async {
     var categories = await EcodsaApi().getCategories();
-    setState(() {
-      filters = categories
-          .map<Category>((category) => Category.fromJson(category))
-          .toList();
-    });
+    if (this.mounted) {
+      setState(() {
+        filters = categories
+            .map<Category>((category) => Category.fromJson(category))
+            .toList();
+      });
+    }
   }
 
   @override

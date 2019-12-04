@@ -17,3 +17,5 @@ class UserLoggedInAppEvent extends AppEvent {
   @override
   List<Object> get props => [this.user];
 }
+
+class UserLoggedOutAppEvent extends AppEvent {}

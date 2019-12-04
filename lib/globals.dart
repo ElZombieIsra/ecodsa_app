@@ -2,6 +2,7 @@
 library globals;
 
 import 'package:ecodsa_app/blocs/app/app_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart' as ds;
@@ -38,3 +39,9 @@ Widget separator({
     );
 
 AppBloc appBloc;
+
+void showAlert(BuildContext context, String message) {
+  Scaffold.of(context).showSnackBar(SnackBar(
+    content: Text(message),
+  ));
+}

@@ -13,7 +13,9 @@ class NetworkService {
 
   Future<dynamic> get(String url, {Map headers}) async {
     if (globals.appBloc != null && globals.appBloc.user != null) {
-      headers ??= {};
+      if (headers == null) {
+        headers = <String, String>{};
+      }
       headers['Authorization'] = "Bearer ${globals.appBloc.user.accessToken}";
     }
     http.Response response = await http.get(url, headers: headers);
@@ -29,7 +31,9 @@ class NetworkService {
   Future<dynamic> post(String url, {Map headers, body, encoding}) async {
     // print(jsonEncode(body));
     if (globals.appBloc != null && globals.appBloc.user != null) {
-      headers ??= {};
+      if (headers == null) {
+        headers = <String, String>{};
+      }
       headers['Authorization'] = "Bearer ${globals.appBloc.user.accessToken}";
     }
     if (headers != null) headers['Content-Type'] = 'application/json';

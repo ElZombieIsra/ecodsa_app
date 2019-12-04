@@ -29,6 +29,10 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
       loggedIn = true;
       user = event.user;
       yield InitedAppState(user, loggedIn);
+    } else if (event is UserLoggedOutAppEvent) {
+      loggedIn = false;
+      user = null;
+      yield InitedAppState(user, loggedIn);
     }
   }
 

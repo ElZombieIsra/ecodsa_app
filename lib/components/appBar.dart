@@ -1,4 +1,5 @@
 import 'package:ecodsa_app/blocs/app/bloc.dart';
+import 'package:ecodsa_app/components/Containers/profile_image_container.dart';
 import 'package:flutter/material.dart';
 import 'package:ecodsa_app/globals.dart' as globals;
 import 'package:ecodsa_app/style.dart' as Style;
@@ -10,13 +11,10 @@ class CustomAppBar extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final AppBloc _appBloc = BlocProvider.of<AppBloc>(context);
     void _onPressed() {
-      if (_appBloc.loggedIn) {
-        // TODO: Implement profile view
-        print('nel');
-      } else {
-        print("damn");
+      if (_appBloc.loggedIn)
+        Navigator.pushNamed(context, '/profile');
+      else
         Navigator.pushNamed(context, "/login");
-      }
     }
 
     return Row(
@@ -38,21 +36,11 @@ class CustomAppBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    color: Style.mutedColor,
-                    borderRadius: BorderRadius.circular(20.0),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        _appBloc.loggedIn
-                            ? _appBloc.user.profileImage
-                            : "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg",
-                      ),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  width: 30.0,
-                  height: 30.0,
+                EcodsaProfileImageContainer(
+                  _appBloc.loggedIn
+                      ? _appBloc.user.profileImage
+                      : "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg",
+                  size: 30,
                 ),
                 Container(
                   width: 10.0,
