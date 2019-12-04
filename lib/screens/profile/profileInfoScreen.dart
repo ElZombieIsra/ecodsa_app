@@ -2,6 +2,7 @@ import 'package:ecodsa_app/components/Buttons/rounded_button.dart';
 import 'package:ecodsa_app/components/TextFields/contact_form_textfield.dart';
 import 'package:ecodsa_app/components/appBar.dart';
 import 'package:ecodsa_app/components/stain_header.dart';
+import 'package:ecodsa_app/models/user.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecodsa_app/globals.dart' as globals;
@@ -18,6 +19,26 @@ class _ProfileInfoScreenState extends State<ProfileInfoScreen> {
   final TextEditingController _companyController = TextEditingController();
   final TextEditingController _rfcController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final User _user = globals.appBloc.user;
+
+  @override
+  void initState() {
+    super.initState();
+    if (_user != null) {
+      if (_user.name != null) {
+        _nameController.text = _user.name;
+      }
+      if (_user.company != null) {
+        _companyController.text = _user.company;
+      }
+      if (_user.rfc != null) {
+        _rfcController.text = _user.rfc;
+      }
+      if (_user.email != null) {
+        _emailController.text = _user.email;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

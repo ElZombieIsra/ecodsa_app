@@ -16,6 +16,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
     password: json['password'] as String,
     accessToken: json['access_token'] as String,
     refreshToken: json['refresh_token'] as String,
+    company: json['company'] as String,
+    rfc: json['rfc'] as String,
   );
 }
 
@@ -27,4 +29,6 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'access_token': instance.accessToken,
       'refresh_token': instance.refreshToken,
       'profile_image': instance.profileImage,
+      'company': instance.company,
+      'rfc': instance.rfc,
     };

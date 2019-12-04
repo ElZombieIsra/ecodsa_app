@@ -15,6 +15,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   AppBloc _appBloc;
+  final EcodsaApi _api = EcodsaApi();
 
   @override
   void initState() {
@@ -28,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: FutureBuilder<User>(
-          future: EcodsaApi().getUser(accessToken: _appBloc.user.accessToken),
+          future: _api.getUser(accessToken: _appBloc.user.accessToken),
           builder: (BuildContext ctx, snap) {
             if (snap.hasError) {
               return SizedBox.expand(
@@ -67,13 +68,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     _user.name.toUpperCase(),
                     style: TextStyle(fontSize: 20.0),
                   ),
-                ),
-                FlatButton(
-                  child: Text(
-                    "Cambiar nombre de usuario",
-                    style: Style.mutedText(fontSize: 16.0),
-                  ),
-                  onPressed: () {},
                 ),
                 globals.separator(height: 20.0),
                 EcodsaRoundedButton(

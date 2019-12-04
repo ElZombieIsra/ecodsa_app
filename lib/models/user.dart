@@ -19,6 +19,10 @@ class User extends Equatable {
   final String refreshToken;
   @JsonKey(nullable: true, name: 'profile_image')
   final String profileImage;
+  @JsonKey(nullable: true)
+  final String company;
+  @JsonKey(nullable: true)
+  final String rfc;
 
   User({
     this.email,
@@ -28,6 +32,8 @@ class User extends Equatable {
     this.password,
     this.accessToken,
     this.refreshToken,
+    this.company,
+    this.rfc,
   });
 
   @override
@@ -37,6 +43,8 @@ class User extends Equatable {
         this.password,
         this.accessToken,
         this.refreshToken,
+        this.company,
+        this.rfc,
       ];
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
